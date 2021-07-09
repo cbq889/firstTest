@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <string.h>
 void GetDataByString(char *strInput)
 {
   if (strInput == NULL) {
@@ -7,14 +9,16 @@ void GetDataByString(char *strInput)
   char *temp = NULL;
   temp = strtok(strInput, ",");
   while (temp != NULL) {
-    sprintf(temp, "%x", data);
-    printf("%d\n", data);
+    sscanf(temp, "%x", &data);
+    printf("%x\n", data);
     temp = strtok(NULL, ",");
   }
 }
 
 int main()
 {
-  GetDataByString("123, 456, 001, 354");
+    char str[] = "123, 456, 001, 354";
+  GetDataByString(str);
+  system("pause");
   return 0;
 }
